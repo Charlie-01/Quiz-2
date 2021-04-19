@@ -10,7 +10,9 @@ const API_KEY = "5d2a1342f3msh69bb3fdca3256e2p118c95jsn6526148fe77d";
 app.use(express.json());
 
 
-make_Ingredient_API_call = async function(ingredients){
+
+// api call functions, the first 2 also need to call the search cocktail by id api
+async function make_Ingredient_API_call(ingredients){
     // add the "%2C" between ingredients for the correct pathname
     var arr = ingredients.split(',');
     var ingredientList = arr.join("%2C");
@@ -23,9 +25,101 @@ make_Ingredient_API_call = async function(ingredients){
             useQueryString: true
         }
     };
-    var result = await fetch('the-cocktail-db.p.rapidapi.com/filter.php?i=' + ingredientList, options);
+    var temp = await fetch('the-cocktail-db.p.rapidapi.com/filter.php?i=' + ingredientList, options);
+    temp = temp.json();
+
+    // get the drink id from the first returned drink
+    var id = temp.drinks[0].idDrink;
+    var result = make_Id_API_call(id)
+    
+    
     return result.json();
 }
+
+async function make_Cocktail_API_call(cocktail){
+    // add the "%20" between words for the correct pathname
+    var cocktailname = cocktail
+    var arr = cocktail.split(' ');
+    if(arr.length() > 1){
+        cocktailname = arr.join("%20");
+    }
+
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': '5d2a1342f3msh69bb3fdca3256e2p118c95jsn6526148fe77d',
+            'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com',
+            useQueryString: true
+        }
+    };
+    var temp = await fetch('the-cocktail-db.p.rapidapi.com/search.php?i=' + cocktailname, options);
+    temp = temp.json();
+
+    // get the drink id from the first returned drink
+    var id = temp.drinks[0].idDrink;
+    var result = make_Id_API_call(id)
+    
+    return result.json();
+}
+
+// random
+async function make_Random_API_call(){
+    console.log("hi");
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': '5d2a1342f3msh69bb3fdca3256e2p118c95jsn6526148fe77d',
+            'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com',
+            useQueryString: true
+        }
+    };
+    var result = await fetch('https://the-cocktail-db.p.rapidapi.com/random.php', options);
+    return result.json();
+}
+
+
+// extra call that is necessary from cocktail id, to cocktail details
+async function make_Id_API_call(id){
+    const options = {
+        method: 'GET',
+        headers: {
+            'x-rapidapi-key': '5d2a1342f3msh69bb3fdca3256e2p118c95jsn6526148fe77d',
+            'x-rapidapi-host': 'the-cocktail-db.p.rapidapi.com',
+            useQueryString: true
+        }
+    };
+    var result = await fetch('the-cocktail-db.p.rapidapi.com//lookup.php?i=' + id, options);
+    return result.json();
+}
+
+
+
+
+// call the api calls from api.service.ts (api call drivers)
+app.get('/v1/byingredient/:search', async function(req, res) {
+    var ret = await make_Ingredient_API_call(req.params.search);
+    console.log(ret);
+    return res.json(ret);
+});
+
+app.get('/v1/bycocktail/:search', async function(req, res) {
+    var ret = await make_Cocktail_API_call(req.params.search);
+    console.log(ret);
+    return res.json(ret);
+});
+
+app.get('/v1/random/:search', async function(req, res) {
+    var ret = await make_Random_API_call();
+    console.log(ret);
+    return res.json(ret);
+});
+
+app.get('/v1/random', async function(req, res) {
+    var ret = await make_Random_API_call();
+    console.log(ret);
+    return res.json(ret);
+});
+    
 
 
 // async function make_urban_dictionary_call(word) {

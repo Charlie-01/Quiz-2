@@ -5,15 +5,27 @@
 <br>
 
 <!-- form with text field, and ingredient text field -->
+<label for="options">Choose a Search:</label>
+<br>
+<select class='select-option' #myOption (change)='onOptionSelected(myOption.value)' id="options" name="options">
+  <option selected="selected">None</option>
+  <option value="random">Random</option>
+  <option value="byIngredients">By Ingredients</option>
+  <option value="byCocktail">Search by Cocktail</option>
+</select>
+<br>
+<br>
 
-
+<!-- THIS PART DOESNT WORK, IDK HOW TO PUSH A TEXTFIELD VALUE TO THE TS -->
 <label> Search by Cocktail Name: </label>
-<!-- [(ngModel)]="translateFrom" (change)='makeAPICall()' class='select-option' id="translate-from" name="translate-from" -->
 <br>
+<form name="search" onsubmit="onSearchSelected()" method="post" id="search">
 <input type="text" id="cocktailname" name="cocktailname">
+<input type="submit" value="submit">
+</form>
 <br>
-
-<label>Search by Ingredients (separated by commas): </label>
 <br>
-<input type="text" id="ingredients" name="ingredients">
+<!-- <label>Search by Ingredients (separated by commas): </label>
+<br>
+<input type="text" class='select-search' #mySearch (change)='onSearchSelected(mySearch.value)' id="ingredients" name="ingredients"> -->
 <br>
