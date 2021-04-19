@@ -1,31 +1,58 @@
-<!-- button -->
-<button type="button">Random Cocktail</button>
-<br>
-<br>
-<br>
+<!-- results/recipe -->
 
+
+<div class="container">
+    <!-- *ngFor="let item of displayItems;" -->
+    <div  [ngClass]="{'result': (option === 'random' || option === 'byingredient' || option === 'byid')}">
+        <!-- if the item is an image, put it in an image tag? -->
+        <!-- if its an ingredient put it in ingreidnets -->
+        
+        {{displayItems[1]}}  <!--name -->
+        <br>
+        <br>
+        <img class="cocktailimg" src="{{displayItems[2]}}" alt="Cocktail" width="500" height="500"> <!--image -->
+        <br>
+        <br>
+        {{displayItems[3]}}  <!--INGREDIENTS-->
+        <br>
+        <br>
+        {{displayItems[4]}} <!--INSTRUCTIONS-->
+        <br>
+        <br>
+        {{displayItems[5]}}  <!--GLASS-->
+
+    </div>
+
+</div>
+
+
+
+
+<!-- form -->
+
+<div class="form">
 <!-- form with text field, and ingredient text field -->
 <label for="options">Choose a Search:</label>
 <br>
 <select class='select-option' #myOption (change)='onOptionSelected(myOption.value)' id="options" name="options">
   <option selected="selected">None</option>
   <option value="random">Random</option>
-  <option value="byIngredients">By Ingredients</option>
-  <option value="byCocktail">Search by Cocktail</option>
+  <option value="byingredient">By Ingredients</option>
 </select>
 <br>
 <br>
 
 <!-- THIS PART DOESNT WORK, IDK HOW TO PUSH A TEXTFIELD VALUE TO THE TS -->
-<label> Search by Cocktail Name: </label>
+<label> Search by Ingredients (eg. orange juice,yogurt): </label>
 <br>
-<form name="search" onsubmit="onSearchSelected()" method="post" id="search">
-<input type="text" id="cocktailname" name="cocktailname">
+<form name="form" method="post" id="form" #searchForm="ngForm" (ngSubmit)="onSearchSelected(searchForm)">
+
+<input type="text" id="search" name="search" id="search" class="form-control"
+ [(ngModel)]="search" #name="ngModel">
+
 <input type="submit" value="submit">
 </form>
 <br>
 <br>
-<!-- <label>Search by Ingredients (separated by commas): </label>
-<br>
-<input type="text" class='select-search' #mySearch (change)='onSearchSelected(mySearch.value)' id="ingredients" name="ingredients"> -->
-<br>
+
+</div>
