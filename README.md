@@ -34,16 +34,6 @@ When searching by ingredients, please note that the API does not look for a drin
 
 
 
-## API Endpoints
-
-localhost.3000/v1/byingredient/:search
-
-localhost.3000/v1/random
-
-localhost.3000/v1/byid/:search
-
-
-
 
 
 ## Citations
