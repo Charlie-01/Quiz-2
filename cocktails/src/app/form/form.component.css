@@ -1,17 +1,79 @@
+.body{
+    font-family: 'Lora', serif;
+}
+
 .container{
     display:inline-block;
     width: 70%;
+    margin-left: 2%;
+    margin-top: 4%;
+    font-family: 'Lora', serif;
+}
+
+.cocktailimg{
+    display:inline-block;
+    border: 10px solid #cbd2c0;
+}
+
+.recipe{
+    display:inline-block;
+    width: 25%;
+    margin-left: 5%;
+    font-family: 'Lora', serif;
 }
 
 .form{
     display:inline-block;
-    width: 30%;
+    width: 25%;
+    position: absolute;
+    top: 0%;
+    right: 0%;
+    background-color: #cbd2c0;
+    height: 100%;
+    padding-left: 5%;
+    padding-top: 5%;
+    font-family: 'Lora', serif;
 }
 
 
-.cocktailimg{
-    display:inline-block;
+
+/* form styling */
+
+input[type=text] {
+    width: 70%;
+    padding: 10px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    font-family: 'Lora', serif;
+  }
+
+select {
+    width: 70%;
+    padding: 10px 20px;
+    border: 1px, solid, black ;
+    font-family: 'Lora', serif;
 }
-.instructions{
-    display: inline-block;
+
+.select-items div:hover {
+    background-color: #cbd2c0;
+}
+
+input[type=submit] {
+    margin-top: 2%;
+    padding: 5px 15px; 
+    background:#6c7263; 
+    /* border: 0.5px, solid, white; */
+    color:white;
+    cursor:pointer;
+    font-family: 'Lora', serif;
+}
+
+button{
+    margin-top: 2%;
+    padding: 5px 15px; 
+    background:white; 
+    border: 0 solid white;
+    color:black;
+    cursor:pointer;
+    font-family: 'Lora', serif;
 }

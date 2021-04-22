@@ -1,5 +1,8 @@
 <!-- results/recipe -->
-
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+</head>
 
 <div class="container">
     <!-- *ngFor="let item of displayItems;" -->
@@ -7,19 +10,29 @@
         <!-- if the item is an image, put it in an image tag? -->
         <!-- if its an ingredient put it in ingreidnets -->
         
-        {{displayItems[1]}}  <!--name -->
-        <br>
-        <br>
-        <img class="cocktailimg" src="{{displayItems[2]}}" alt="Cocktail" width="500" height="500"> <!--image -->
-        <br>
-        <br>
-        {{displayItems[3]}}  <!--INGREDIENTS-->
-        <br>
-        <br>
-        {{displayItems[4]}} <!--INSTRUCTIONS-->
-        <br>
-        <br>
-        {{displayItems[5]}}  <!--GLASS-->
+        <img class="cocktailimg" src="{{displayItems[2]}}" alt="Cocktail" width="500" height="500" onerror="this.onerror=null; this.src='https://api.totallypromotional.com/Data/Media/Catalog/6/800/0a7387c6-c44e-49b2-ae13-e7259f20599a8-oz-Signature-Martini-Glass-Blank-GU145B-clear.jpg'">
+
+        <div class="recipe">
+          <h1>{{displayItems[1]}}</h1>  <!--name -->
+          <br>
+          <h3>Ingredients:</h3>
+          {{displayItems[3]}}  <!--INGREDIENTS-->
+          <br>
+          <br>
+          <h3>Steps:</h3>
+          {{displayItems[4]}} <!--INSTRUCTIONS-->
+          <br>
+          <br>
+          <h3>Glass:</h3>
+          {{displayItems[5]}}  <!--GLASS-->
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+        
+
+        </div>
 
     </div>
 
@@ -29,7 +42,6 @@
 
 
 <!-- form -->
-
 <div class="form">
 <!-- form with text field, and ingredient text field -->
 <label for="options">Choose a Search:</label>
@@ -43,16 +55,23 @@
 <br>
 
 <!-- THIS PART DOESNT WORK, IDK HOW TO PUSH A TEXTFIELD VALUE TO THE TS -->
-<label> Search by Ingredients (eg. orange juice,yogurt): </label>
+<label> Search by Ingredients <br>(eg. orange juice,lime): </label>
 <br>
 <form name="form" method="post" id="form" #searchForm="ngForm" (ngSubmit)="onSearchSelected(searchForm)">
 
 <input type="text" id="search" name="search" id="search" class="form-control"
  [(ngModel)]="search" #name="ngModel">
-
-<input type="submit" value="submit">
+<br>
+<input type="submit" value="Search">
 </form>
 <br>
 <br>
-
+<button onClick="window.location.reload();">Try Another Search</button>
 </div>
+
+
+
+
+
+<!-- <span style="font-size:30px;cursor:pointer" (ngClick)="openNav()">&#9776; open</span> -->
+
