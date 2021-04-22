@@ -1,4 +1,4 @@
-##Summary
+##Summary##
 Everytime I search through free APIs I come across this one called CocktailDB. I worked as a bartender when I was 16 (yes illegally) and am really drawn to the intricacies
 that go into drink making and its history, chemistry, and artistry... so this API caught my eye. I chose to use the random cocktail recipe, and search by ingredient features.
 I built a form that could take in the appropriate choices for these endpoints, and chose to display the image, name, ingredients, and instructions for the 
@@ -12,12 +12,12 @@ first one from the initial list of IDs, so I randomized that aswell.
 
 
 
-##Experience
+##Experience##
 I really enjoyed this assignment. I think I lacked a lot of confidence in what I was doing this semester because this was all so new. Doing the labs often felt like 
 I was faking my abilities, just following steps and not really comfortable with what I was doing. Building this site from scratch helped me feel a lot more comfortable
 and made me realize that I actually know more than I thought and to trust myself rather than panic at foreign concepts.
 
-##Use Notes
+##Use Notes##
 The input for the ingredients should be "orange juice,lime" - no space after the comma.
 
 In some cases the API response is just a little too slow for the site, and ingredients (the last thing I pull from the JSON) will not appear.
@@ -31,7 +31,7 @@ When searching by ingredients, please note that the API does not look for a drin
 
 
 
-##API Endpoints
+##API Endpoints##
 localhost.3000/v1/byingredient/:search
 localhost.3000/v1/random
 localhost.3000/v1/byid/:search
@@ -40,7 +40,7 @@ localhost.3000/v1/byid/:search
 
 
 
-##Citations
+##Citations##
 Mostly my group's Lab 5 code
 https://angular.io/guide/forms
 https://stackblitz.com/angular/odmdkegvgkg?file=src%2Fapp%2Fhero-form%2Fhero-form.component.html
